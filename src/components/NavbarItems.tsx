@@ -11,6 +11,7 @@ type Dataset = {
 }
 
 const NavbarItems:React.FC<Dataset> = ({menuItems}) => {
+
   return (
     <ul>
       {menuItems && menuItems.map((item, index) => (
