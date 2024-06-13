@@ -1,25 +1,23 @@
-import NavbarItems from "./NavbarItems";
+import NavbarItems from "./NavbarItems"
 
-type MenuItems = {
+type DataItem = {
   label: string,
   to: string,
-  children?: MenuItems[],
+  children?: DataItem[];
 }
 
-type NavItemsProps = {
-  menuItem: MenuItems;
+type Dataset = {
+  menuItems: DataItem;
 }
 
-const Items:React.FC<NavItemsProps> = ({menuItem}) => {
+const Items:React.FC<Dataset> = ({menuItems}) => {
   return (
-    <>
     <li>
-      <p>{menuItem.label}</p>
-      {menuItem.children && menuItem.children.length>0 && (
-        <NavbarItems menu={menuItem.children}/>
-      )}  
+      <p>{menuItems?.label}</p>
+      {menuItems && menuItems.children && menuItems.children.length>0 && (
+        <NavbarItems menuItems={menuItems.children}/>
+      )}
     </li>
-    </>
   )
 }
 

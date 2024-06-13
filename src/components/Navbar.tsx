@@ -1,12 +1,10 @@
-import { ArrowDown } from "lucide-react"
-import NavbarItems from "./NavbarItems";
-import menus from "../hooks/data"
-
+import menus from '../hooks/data';
+import NavbarItems from './NavbarItems';
 
 const Navbar = () => {
-  return (
-    <div className="bg-gray-700 p-5">
-      <NavbarItems menu={menus}/>
+  return(
+    <div>
+      <NavbarItems menuItems={menus} />
     </div>
   )
 }

@@ -1,24 +1,22 @@
-import Items from "./Items";
+import Items from "./Items"
 
-type MenuItems = {
-    label: string,
-    to: string,
-    children?: MenuItems[],
+type DataItem = {
+  label: string,
+  to: string,
+  children?: DataItem[];
 }
 
-type NavItemsProp = {
-  menu: MenuItems[];
+type Dataset = {
+  menuItems: DataItem[];
 }
 
-const NavbarItems:React.FC<NavItemsProp> = ({menu}) => {
+const NavbarItems:React.FC<Dataset> = ({menuItems}) => {
   return (
-    <>
-    <ul className="fx text-white justify-end gap-20 pr-20"> 
-      {menu && menu.length && menu.map((item, index) => (
-        <Items menuItem={item} key={index}/>
+    <ul>
+      {menuItems && menuItems.map((item, index) => (
+        <Items key={index} menuItems={item}/>
       ))}
     </ul>
-    </>
   )
 }
 
