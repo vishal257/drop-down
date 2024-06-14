@@ -1,5 +1,6 @@
 import { useState } from "react";
 import NavbarItems from "./NavbarItems"
+import { Link } from "react-router-dom";
 
 type DataItem = {
   label: string,
@@ -8,7 +9,7 @@ type DataItem = {
 }
 
 type Dataset = {
-  menuItems: DataItem;
+  menuItems: DataItem,
 }
 
 type DisplayItemState = {
@@ -27,19 +28,25 @@ const Items:React.FC<Dataset> = ({menuItems}) => {
   }
 
   return (
-    <li>
-      <div className="flex items-center">
-        <p>{menuItems?.label}</p>
+    <>
+    <li className="">
+      <div className="flex items-center b-red-500">
+        <p>
+          {(!!menuItems?.children) ? (<span>{menuItems?.label}</span>) : (<Link to={menuItems.to}>{menuItems?.label}</Link>)}
+        </p>
         {
           menuItems && menuItems.children && menuItems.children.length>0 ? (
-            <span onClick={() => handleToggle(menuItems.label)} className="flex items-center cursor-pointer">+</span>
+            <span onClick={() => handleToggle(menuItems.label)} className="flex items-center cursor-pointer">
+              {displayItem[menuItems.label] ? '  -' : ' +'}
+            </span>
           ) : null
         }
       </div>
-      {menuItems && menuItems.children && menuItems.children.length>0 && displayItem[menuItems.label] && (
-        <NavbarItems menuItems={menuItems.children}/>
+      {(menuItems && menuItems.children && menuItems.children.length>0 && displayItem[menuItems.label]) && (
+          <NavbarItems menuItems={menuItems.children} depth={1}/>
       )}
     </li>
+    </>
   )
 }
 

@@ -7,17 +7,22 @@ type DataItem = {
 }
 
 type Dataset = {
-  menuItems: DataItem[];
+  menuItems: DataItem[],
+  depth: number,
 }
 
-const NavbarItems:React.FC<Dataset> = ({menuItems}) => {
+const NavbarItems:React.FC<Dataset> = ({menuItems, depth}) => {
 
   return (
-    <ul>
-      {menuItems && menuItems.map((item, index) => (
-        <Items key={index} menuItems={item}/>
-      ))}
-    </ul>
+      <ul className="mx-10">
+        {menuItems && menuItems.map((item,index) => (
+          <div key={index}>
+            <Items menuItems={item}/>
+            {depth === 0 ? <hr className="mb-8 mt-2"/> : null}
+          </div>
+ 
+        ))}
+      </ul>
   )
 }
 

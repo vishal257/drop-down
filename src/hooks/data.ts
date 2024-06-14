@@ -13,7 +13,7 @@ const menus = [
             },
             {
                 label: 'Details',
-                to: '/profile/user'
+                to: '/profile/details'
             }
         ]
     },
@@ -23,19 +23,19 @@ const menus = [
         children: [
             {
                 label: 'Account',
-                to: '/account'
+                to: '/setting/account'
             },
             {
                 label: 'Security',
-                to: '/security',
+                to: '/setting/security',
                 children:[
                     {
                         label: 'Login',
-                        to: '/login'
+                        to: '/setting/security/login'
                     },
                     {
                         label: 'Register',
-                        to: '/register'
+                        to: '/setting/security/register'
                     }
                 ]
             },
